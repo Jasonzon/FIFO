@@ -23,7 +23,7 @@ export async function addToQueue(
   next: NextFunction
 ) {
   try {
-    const { action } = req.body as { action: string };
+    const { action } = req.params as { action: string };
     const newQueue = queue.addToQueue(action);
     return res.status(HTTP_OK).json(newQueue);
   } catch (error: any) {

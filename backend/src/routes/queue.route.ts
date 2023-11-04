@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/", getQueue);
 
-router.post("/", addToQueue);
+router.put("/:action", addToQueue);
 
 router.put("/", takeFromQueue);
 

@@ -1,4 +1,4 @@
-import Actions from "./Actions";
+import Actions from "./ActionList";
 import Header from "./Header";
 import Queue from "./Queue";
 

@@ -1,5 +1,5 @@
 import express from "express";
-import { getActions } from "../controllers/actions.controller.js";
+import { getActions } from "../controllers/actions.controller";
 
 const router = express.Router();
 

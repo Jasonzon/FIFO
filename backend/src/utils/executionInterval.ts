@@ -1,5 +1,5 @@
-import { EXECUTION_INTERVAL } from "../constants.js";
-import { Queue } from "../models/queue.model.js";
+import { EXECUTION_INTERVAL } from "../constants";
+import { Queue } from "../models/queue.model";
 
 export default function startExecutionInterval(queue: Queue): NodeJS.Timer {
   console.log("2min execution interval started");

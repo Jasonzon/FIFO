@@ -1,13 +1,22 @@
-import { HTTP_BAD_REQUEST, HTTP_NOT_FOUND } from "../constants.js";
-import HttpError from "../exceptions/http.exception.js";
-import { TAction } from "../models/action.model.js";
-import calculateCredits from "../utils/calculateCredits.js";
+import { HTTP_BAD_REQUEST, HTTP_NOT_FOUND } from "../constants";
+import HttpError from "../exceptions/http.exception";
+import { TAction } from "../models/action.model";
+import calculateCredits from "../utils/calculateCredits";
 
 export class Actions {
   private actions: TAction[] = [];
 
   constructor(baseActions: TAction[]) {
     this.actions = baseActions;
+  }
+
+  public exists(action: string): boolean {
+    for (const act of this.actions) {
+      if (act.type === action) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public getActions(): TAction[] {
@@ -34,11 +43,11 @@ export class Actions {
   }
 
   public hasCredits(action: string): boolean {
-    this.actions.forEach((act) => {
+    for (const act of this.actions) {
       if (act.type === action) {
         return act.credits > 0;
       }
-    });
+    }
     return false;
   }
 }

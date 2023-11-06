@@ -1,4 +1,6 @@
-import { TAction } from "./models/action.model.js";
+import { TAction } from "./models/action.model";
+
+export const PORT = process.env.PORT || 5000;
 
 export const HTTP_OK = 200;
 export const HTTP_NOT_FOUND = 404;

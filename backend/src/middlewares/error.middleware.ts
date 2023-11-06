@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import HttpError from "../exceptions/http.exception.js";
-import { HTTP_SERVER_ERROR } from "../constants.js";
+import HttpError from "../exceptions/http.exception";
+import { HTTP_SERVER_ERROR } from "../constants";
 
 export default function error(
   err: HttpError,

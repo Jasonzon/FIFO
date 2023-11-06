@@ -1,5 +1,5 @@
 import express from "express";
-import { getQueue, addToQueue } from "../controllers/queue.controller.js";
+import { getQueue, addToQueue } from "../controllers/queue.controller";
 
 const router = express.Router();
 

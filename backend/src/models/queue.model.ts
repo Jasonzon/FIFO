@@ -1,12 +1,16 @@
-import { HTTP_BAD_REQUEST } from "../constants.js";
-import HttpError from "../exceptions/http.exception.js";
-import { actions } from "../controllers/actions.controller.js";
+import { HTTP_BAD_REQUEST } from "../constants";
+import HttpError from "../exceptions/http.exception";
+import { actions } from "../controllers/actions.controller";
 
 export class Queue {
   private queue: string[] = [];
 
-  public addToQueue(action: string): void {
+  public addToQueue(action: string): string[] {
+    if (!actions.exists(action)) {
+      throw new HttpError("This action doesnt exist", HTTP_BAD_REQUEST);
+    }
     this.queue.push(action);
+    return this.queue;
   }
 
   public getQueue(): string[] {
@@ -20,7 +24,7 @@ export class Queue {
     return this.queue.shift() as string;
   }
 
-  public execute(): void {
+  public execute(): string | undefined {
     console.log("Executing...");
     if (this.queue.length === 0) {
       console.log("No actions in queue");
@@ -34,5 +38,6 @@ export class Queue {
     const actionTaken = this.takeFromQueue();
     console.log(actionTaken, "executed");
     actions.removeCredit(actionTaken);
+    return actionTaken;
   }
 }

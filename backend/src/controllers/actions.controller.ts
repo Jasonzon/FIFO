@@ -1,8 +1,10 @@
-import { HTTP_OK } from "../constants";
-import { Actions } from "../services/actions.service";
+import { HTTP_OK, baseActions } from "../constants.js";
+import { Actions } from "../models/actions.model.js";
 import { NextFunction, Request, Response } from "express";
+import startCalculInterval from "../utils/interval.js";
 
-const actions = new Actions();
+export const actions = new Actions(baseActions);
+startCalculInterval(actions);
 
 export async function getActions(
   req: Request,
@@ -10,21 +12,8 @@ export async function getActions(
   next: NextFunction
 ) {
   try {
-    return res.status(HTTP_OK).json(actions.getActions());
-  } catch (error: any) {
-    next(error);
-  }
-}
-
-export async function removeCredits(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  try {
-    const { action } = req.params as { action: string };
-    actions.removeCredit(action);
-    return res.status(HTTP_OK).json({ message: "Credit successfully removed" });
+    const newActions = actions.getActions();
+    return res.status(HTTP_OK).json(newActions);
   } catch (error: any) {
     next(error);
   }

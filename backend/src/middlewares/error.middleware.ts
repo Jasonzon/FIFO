@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import HttpError from "../exceptions/error.exception";
+import HttpError from "../exceptions/http.exception";
 import { HTTP_SERVER_ERROR } from "../constants";
 
 export default function error(

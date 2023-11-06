@@ -1,24 +1,18 @@
 import { HTTP_BAD_REQUEST, HTTP_NOT_FOUND } from "../constants.js";
-import HttpError from "../exceptions/error.exception.js";
+import HttpError from "../exceptions/http.exception.js";
 import { TAction } from "../models/action.model.js";
+import calculateCredits from "../utils/calculate.js";
 
 export class Actions {
   private actions: TAction[] = [];
 
-  public addAction(action: TAction): TAction[] {
-    this.actions.push(action);
-    return this.actions;
+  constructor(baseActions: TAction[]) {
+    this.actions = baseActions;
   }
 
   public getActions(): TAction[] {
     return this.actions;
   }
-
-  /*
-  public actionExists(newAction: TAction): boolean {
-    return this.actions.some(({ type }) => newAction.type === type);
-  }
-  */
 
   public removeCredit(action: string): void {
     const actionToRemoveCredits = this.actions.find(
@@ -31,7 +25,11 @@ export class Actions {
       throw new HttpError("This actions has no more credits", HTTP_BAD_REQUEST);
     }
     this.actions = this.actions.map((act) =>
-      act.type === action ? { type: act.type, credits: act.credits - 1 } : act
+      act.type === action ? { ...act, credits: act.credits - 1 } : act
     );
+  }
+
+  public calculate(): void {
+    this.actions = calculateCredits(this.actions);
   }
 }

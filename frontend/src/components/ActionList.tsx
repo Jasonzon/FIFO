@@ -25,7 +25,6 @@ export default function ActionList() {
   } = useQuery({
     queryKey: ["actions"],
     queryFn: getActions,
-    refetchInterval: 5 * 1000,
   });
 
   const {
@@ -37,36 +36,29 @@ export default function ActionList() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["queue"] }),
   });
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
-  if (isError) {
-    return (
-      <p className="text-center text-red-500">
-        Erreur lors du chargement des actions
-      </p>
-    );
-  }
-
-  if (isErrorMutation) {
-    return (
-      <p className="text-center text-red-500">
-        Erreur lors de l'ajout de l'action
-      </p>
-    );
-  }
-
   return (
     <div>
       <h2 className="font-bold text-xl text-center mb-2">
         Actions disponibles
       </h2>
-      <ul className="flex flex-wrap justify-center list-none gap-4">
-        {actions?.map((action) => (
-          <ActionType mutate={mutate} isPending={isPending} action={action} />
-        ))}
-      </ul>
+      {isLoading && <Spinner className="my-16" />}
+      {isError && (
+        <p className="text-center text-red-500">
+          Erreur lors du chargement des actions
+        </p>
+      )}
+      {!isLoading && !isError && (
+        <ul className="flex flex-wrap justify-center list-none gap-4">
+          {actions?.map((action) => (
+            <ActionType mutate={mutate} isPending={isPending} action={action} />
+          ))}
+        </ul>
+      )}
+      {isErrorMutation && (
+        <p className="text-center text-red-500">
+          Erreur lors de l'ajout de l'action
+        </p>
+      )}
     </div>
   );
 }

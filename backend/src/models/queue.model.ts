@@ -1,6 +1,6 @@
-import { HTTP_BAD_REQUEST } from "../constants";
-import HttpError from "../exceptions/http.exception";
-import { actions } from "../controllers/actions.controller";
+import { HTTP_BAD_REQUEST } from "../constants.js";
+import HttpError from "../exceptions/http.exception.js";
+import { actions } from "../controllers/actions.controller.js";
 
 export class Queue {
   private queue: string[] = [];

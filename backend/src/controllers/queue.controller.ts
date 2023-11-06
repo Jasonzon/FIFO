@@ -1,7 +1,7 @@
 import { HTTP_OK } from "../constants.js";
 import { Queue } from "../models/queue.model.js";
 import { NextFunction, Request, Response } from "express";
-import startExecutionInterval from "../utils/execute.js";
+import startExecutionInterval from "../utils/executionInterval.js";
 
 const queue = new Queue();
 startExecutionInterval(queue);

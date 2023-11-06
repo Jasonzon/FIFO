@@ -1,7 +1,7 @@
 import { HTTP_OK, baseActions } from "../constants.js";
 import { Actions } from "../models/actions.model.js";
 import { NextFunction, Request, Response } from "express";
-import startCalculInterval from "../utils/interval.js";
+import startCalculInterval from "../utils/calculationInterval.js";
 
 export const actions = new Actions(baseActions);
 startCalculInterval(actions);

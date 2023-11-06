@@ -1,7 +1,7 @@
 import { HTTP_BAD_REQUEST, HTTP_NOT_FOUND } from "../constants.js";
 import HttpError from "../exceptions/http.exception.js";
 import { TAction } from "../models/action.model.js";
-import calculateCredits from "../utils/calculate.js";
+import calculateCredits from "../utils/calculateCredits.js";
 
 export class Actions {
   private actions: TAction[] = [];

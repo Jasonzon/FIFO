@@ -4,10 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:front": "cd frontend && npm run dev",
-    "dev:back": "cd backend && npm run dev"
+    "dev:back": "cd backend && npm run dev",
+    "install:front": "cd frontend && npm install",
+    "install:back": "cd backend && npm install",
+    "install": "npm run install:front && npm run install:back",
+    "start": "npm run install && concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:back": "cd backend && npm run start",
+    "start:front": "cd frontend && npm run start",
+    "test:front": "cd frontend && npm run test",
+    "test:back": "cd backend && npm run test",
+    "test": "npm run test:front && npm run test:back"
+
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }

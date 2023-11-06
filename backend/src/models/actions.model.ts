@@ -32,4 +32,13 @@ export class Actions {
   public calculate(): void {
     this.actions = calculateCredits(this.actions);
   }
+
+  public hasCredits(action: string): boolean {
+    this.actions.forEach((act) => {
+      if (act.type === action) {
+        return act.credits > 0;
+      }
+    });
+    return false;
+  }
 }

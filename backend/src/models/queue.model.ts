@@ -26,6 +26,11 @@ export class Queue {
       console.log("No actions in queue");
       return;
     }
+    const nextAction = this.queue[0];
+    if (!actions.hasCredits(nextAction)) {
+      console.log("Not enough credits for action", nextAction);
+      return;
+    }
     const actionTaken = this.takeFromQueue();
     console.log(actionTaken, "executed");
     actions.removeCredit(actionTaken);

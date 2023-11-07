@@ -6,7 +6,7 @@ export default function Spinner({ className }: SpinnerProps) {
   return (
     <div
       role="status"
-      className={`${className} flex justify-center items-center`}
+      className={`${className} flex-1 flex justify-center items-center`}
     >
       <svg
         aria-hidden="true"

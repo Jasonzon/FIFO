@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./styles/index.css";
 import App from "./components/App";
 import ReactQueryProvider from "./providers/react-query.provider";
+import ActionTypeLoadingProvider from "./contexts/ActionTypeLoading";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ReactQueryProvider>
-      <App />
+      <ActionTypeLoadingProvider>
+        <App />
+      </ActionTypeLoadingProvider>
     </ReactQueryProvider>
   </React.StrictMode>
 );

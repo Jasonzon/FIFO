@@ -1,5 +1,7 @@
 {
   "name": "frontend",
+  "description": "Frontend of Fifo technical test",
+  "author": "Jason Moret",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

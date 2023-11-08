@@ -43,10 +43,36 @@ git clone https://github.com/Jasonzon/FIFO.git
 npm run test
 ```
 
+Note : Cela lancera d'abord la commande suivante :
+
+```bash
+npm run install:all
+```
+
+Ce qui installera toutes les dépendances du projet.
+Pour lancer les tests sans installer les modules :
+
+```bash
+npm run test:w-install
+```
+
 2. Lancez l'app avec la commande suivante :
 
 ```bash
 npm run start
+```
+
+Note : Cela lancera d'abord la commande suivante :
+
+```bash
+npm run install:all
+```
+
+Ce qui installera toutes les dépendances du projet.
+Pour lancer l'application sans installer les modules :
+
+```bash
+npm run start:w-install
 ```
 
 Cela va installer toutes les dépendances dans le projet racine, le frontend et le backend puis lancer en même temps le serveur React, et le serveur Express après qu'il ait été build.

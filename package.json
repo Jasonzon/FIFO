@@ -13,7 +13,9 @@
     "start": "npm run install:all && concurrently \"npm run start:back\" \"npm run start:front\"",
     "start:back": "cd backend && npm run start",
     "start:front": "cd frontend && npm run start",
-    "test": "cd backend && npm run test"
+    "test": "npm run install:all && cd backend && npm run test",
+    "start:w-install": "concurrently \"npm run start:back\" \"npm run start:front\"",
+    "test:w-install": "cd backend && npm run test"
   },
   "keywords": [],
   "author": "Jason Moret",

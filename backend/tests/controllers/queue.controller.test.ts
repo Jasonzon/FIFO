@@ -10,7 +10,9 @@ describe("Queue Controller", () => {
   });
 
   it("should add an action to the queue", async () => {
-    const response = await supertest(app).put("/queue/A");
+    const response = await supertest(app).post("/queue").send({
+      action: "A",
+    });
     expect(response.status).toBe(HTTP_OK);
     expect(response.body).toEqual(["A"]);
   });

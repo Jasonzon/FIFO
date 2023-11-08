@@ -18,7 +18,7 @@ export default function ActionTypeList() {
       <h2 className="font-bold text-xl text-center mb-2">
         Actions disponibles
       </h2>
-      {isLoading && <Spinner className="my-16" />}
+      {isLoading && <Spinner className="my-8" />}
       {isError && (
         <p className="text-center text-red-500">
           Erreur lors du chargement des actions

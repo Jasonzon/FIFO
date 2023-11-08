@@ -4,8 +4,9 @@ import { NextFunction, Request, Response } from "express";
 import startExecutionInterval from "../utils/executionInterval";
 import { actionSchema } from "../schemas/action.schema";
 import HttpError from "../exceptions/http.exception";
+import { actions } from "./actions.controller";
 
-const queue = new Queue();
+const queue = new Queue(actions);
 startExecutionInterval(queue);
 
 export async function getQueue(
@@ -27,7 +28,7 @@ export async function addToQueue(
   next: NextFunction
 ) {
   try {
-    const parsedAction = actionSchema.safeParse(req.params);
+    const parsedAction = actionSchema.safeParse(req.body);
     if (!parsedAction.success) {
       throw new HttpError("Invalid data", HTTP_BAD_REQUEST);
     }

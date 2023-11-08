@@ -9,5 +9,5 @@ export default function error(
   next: NextFunction
 ) {
   console.error(err.message);
-  res.status(err.status || HTTP_SERVER_ERROR).json({ message: err.message });
+  res.status(err.status || HTTP_SERVER_ERROR).json({ error: err.message });
 }

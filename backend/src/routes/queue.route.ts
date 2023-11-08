@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get("/", getQueue);
 
-router.put("/:action", addToQueue);
+router.post("/", addToQueue);
 
 export default router;

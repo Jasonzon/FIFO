@@ -36,9 +36,7 @@ export default function Action({ action }: ActionProps) {
         </Button>
       </div>
       {isErrorMutation && (
-        <p className="text-center text-red-500">
-          Erreur lors de l'ajout de l'action
-        </p>
+        <p className="text-center text-red-500">Erreur lors de l'ajout</p>
       )}
     </li>
   );

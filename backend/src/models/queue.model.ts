@@ -1,12 +1,18 @@
 import { HTTP_BAD_REQUEST } from "../constants";
 import HttpError from "../exceptions/http.exception";
-import { actions } from "../controllers/actions.controller";
+import { Actions } from "./actions.model";
 
 export class Queue {
   private queue: string[] = [];
 
+  private actions: Actions;
+
+  constructor(actions: Actions) {
+    this.actions = actions;
+  }
+
   public addToQueue(action: string): string[] {
-    if (!actions.exists(action)) {
+    if (!this.actions.exists(action)) {
       throw new HttpError("This action doesnt exist", HTTP_BAD_REQUEST);
     }
     this.queue.push(action);
@@ -31,13 +37,13 @@ export class Queue {
       return;
     }
     const nextAction = this.queue[0];
-    if (!actions.hasCredits(nextAction)) {
+    if (!this.actions.hasCredits(nextAction)) {
       console.log("Not enough credits for action", nextAction);
       return;
     }
     const actionTaken = this.takeFromQueue();
     console.log(actionTaken, "executed");
-    actions.removeCredit(actionTaken);
+    this.actions.removeCredit(actionTaken);
     return actionTaken;
   }
 }

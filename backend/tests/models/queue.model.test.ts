@@ -12,10 +12,10 @@ describe("Queue Model", () => {
       { type: "A", credits: 3, maxCredits: 5 },
       { type: "B", credits: 0, maxCredits: 5 },
     ]);
-    queue = new Queue();
+    queue = new Queue(actions);
     queue.addToQueue(actions.getActions()[0].type);
     queue.addToQueue(actions.getActions()[1].type);
-    emptyQueue = new Queue();
+    emptyQueue = new Queue(new Actions([]));
   });
 
   it("should add action to the queue", () => {

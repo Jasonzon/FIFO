@@ -1,25 +1,22 @@
 {
   "name": "fifo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fifo technical test",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "concurrently \"npm run dev:back\" \"npm run dev:front\"",
     "dev:front": "cd frontend && npm run dev",
     "dev:back": "cd backend && npm run dev",
     "install:front": "cd frontend && npm install",
     "install:back": "cd backend && npm install",
-    "install": "npm run install:front && npm run install:back",
-    "start": "npm run install && concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "install:all": "npm install && npm run install:front && npm run install:back",
+    "start": "npm run install:all && concurrently \"npm run start:back\" \"npm run start:front\"",
     "start:back": "cd backend && npm run start",
     "start:front": "cd frontend && npm run start",
-    "test:front": "cd frontend && npm run test",
-    "test:back": "cd backend && npm run test",
-    "test": "npm run test:front && npm run test:back"
-
+    "test": "cd backend && npm run test"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jason Moret",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.2.2"

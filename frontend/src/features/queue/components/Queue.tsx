@@ -9,6 +9,7 @@ export default function Queue() {
     data: queue,
     isLoading,
     isError,
+    error,
   } = useQuery({
     queryKey: ["queue"],
     queryFn: getQueue,

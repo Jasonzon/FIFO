@@ -1,7 +1,16 @@
 import { EXECUTION_INTERVAL } from "../constants";
+import { ExecutionTime } from "../models/execution-time.model";
 import { Queue } from "../models/queue.model";
 
-export default function startExecutionInterval(queue: Queue): NodeJS.Timer {
+function callback(queue: Queue, time: ExecutionTime) {
+  queue.execute();
+  time.setTime(Date.now());
+}
+
+export default function startExecutionInterval(
+  queue: Queue,
+  time: ExecutionTime
+): NodeJS.Timer {
   console.log("2min execution interval started");
-  return setInterval(() => queue.execute(), EXECUTION_INTERVAL);
+  return setInterval(() => callback(queue, time), EXECUTION_INTERVAL);
 }

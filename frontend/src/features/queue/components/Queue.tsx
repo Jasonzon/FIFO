@@ -9,7 +9,6 @@ export default function Queue() {
     data: queue,
     isLoading,
     isError,
-    error,
   } = useQuery({
     queryKey: ["queue"],
     queryFn: getQueue,
@@ -38,7 +37,7 @@ export default function Queue() {
             {"Prochaine action : "}
           </li>
           {queue?.map((action, index) => (
-            <Action type={action} index={index} />
+            <Action key={`${action}-${index}`} type={action} index={index} />
           ))}
         </ul>
       )}

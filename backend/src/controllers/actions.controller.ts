@@ -2,9 +2,11 @@ import { HTTP_OK, baseActions } from "../constants";
 import { Actions } from "../models/actions.model";
 import { NextFunction, Request, Response } from "express";
 import startCalculInterval from "../utils/calculationInterval";
+import { CalculationTime } from "../models/calculation-time.model";
 
 export const actions = new Actions(baseActions);
-startCalculInterval(actions);
+export const CalculTime = new CalculationTime();
+startCalculInterval(actions, CalculTime);
 
 export async function getActions(
   req: Request,

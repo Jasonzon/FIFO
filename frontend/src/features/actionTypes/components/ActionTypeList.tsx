@@ -27,7 +27,7 @@ export default function ActionTypeList() {
       {!isLoading && !isError && (
         <ul className="flex flex-wrap justify-center list-none gap-4">
           {actions?.map((action) => (
-            <ActionType action={action} />
+            <ActionType key={action.type} action={action} />
           ))}
         </ul>
       )}

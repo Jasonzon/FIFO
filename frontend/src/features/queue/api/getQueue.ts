@@ -3,6 +3,7 @@ import { baseUrl } from "../../../api/config";
 
 export default async function getQueue(): Promise<string[]> {
   queryClient.invalidateQueries({ queryKey: ["actions"] });
+  queryClient.invalidateQueries({ queryKey: ["executionTime"] });
   const res = await fetch(`${baseUrl}/queue`);
   if (!res.ok) {
     const error = await res.text();

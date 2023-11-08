@@ -5,9 +5,11 @@ import startExecutionInterval from "../utils/executionInterval";
 import { actionSchema } from "../schemas/action.schema";
 import HttpError from "../exceptions/http.exception";
 import { actions } from "./actions.controller";
+import { ExecutionTime } from "../models/execution-time.model";
 
 const queue = new Queue(actions);
-startExecutionInterval(queue);
+export const ExecTime = new ExecutionTime();
+startExecutionInterval(queue, ExecTime);
 
 export async function getQueue(
   req: Request,
